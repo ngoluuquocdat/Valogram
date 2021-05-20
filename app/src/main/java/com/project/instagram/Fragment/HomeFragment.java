@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +29,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
+    TextView reminder;
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
     private List<Post> postLists;
@@ -40,6 +42,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        reminder = view.findViewById(R.id.reminder);
 
         recyclerView = view.findViewById(R.id.rv_view);
         recyclerView.setHasFixedSize(true);
@@ -98,6 +102,11 @@ public class HomeFragment extends Fragment {
                             postLists.add(post);
                         }
                     }
+                }
+                if(postLists.size() == 0){
+                    reminder.setVisibility(View.VISIBLE);
+                } else {
+                    reminder.setVisibility(View.GONE);
                 }
                 postAdapter.notifyDataSetChanged();
             }

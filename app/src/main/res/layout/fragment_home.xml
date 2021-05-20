@@ -42,10 +42,21 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bar"/>
+
+    <TextView
+        android:id="@+id/reminder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No post found. You should follow someone to see new posts."
+        android:textAlignment="center"
+        android:textStyle="italic"
+        android:layout_below="@+id/rv_view"
+        android:layout_marginTop="30dp"/>
 
 </RelativeLayout>
