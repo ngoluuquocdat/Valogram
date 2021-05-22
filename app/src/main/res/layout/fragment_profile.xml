@@ -31,20 +31,14 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/options"
-                    android:src="@drawable/ic_options"
+                    android:id="@+id/ic_logout"
+                    android:src="@drawable/ic_logout"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="10dp"/>
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ic_logout"
-        android:src="@drawable/ic_options"
-        />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
