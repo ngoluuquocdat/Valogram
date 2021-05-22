@@ -82,6 +82,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 }
             }
         });
+        holder.comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, CommentsActivity.class);
+                intent.putExtra("postid", post.getPostid());
+                intent.putExtra("publisherid", post.getPublisher());
+                mContext.startActivity(intent);
+            }
+        });
         holder.comments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,7 +134,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                comments.setText("View All "+ snapshot.getChildrenCount() + " Comments");
+                if(snapshot.getChildrenCount() == 0)
+                {
+                    comments.setVisibility(View.GONE);
+                }
+                else
+                {
+                    comments.setVisibility(View.VISIBLE);
+                    comments.setText("View All "+ snapshot.getChildrenCount() + " Comments");
+                }
             }
 
             @Override
