@@ -191,12 +191,12 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/recyler_view"/>
+                android:id="@+id/recycler_view"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                android:id="@+id/recyler_view_saved"/>
+                android:id="@+id/recycler_view_saved"/>
 
         </LinearLayout>
     </ScrollView>
