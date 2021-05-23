@@ -1,5 +1,6 @@
 package com.project.instagram.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.project.instagram.Adapter.PostAdapter;
+import com.project.instagram.ChatListActivity;
 import com.project.instagram.Model.Post;
 import com.project.instagram.Model.User;
 import com.project.instagram.R;
@@ -30,6 +33,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     TextView reminder;
+    ImageView btn_chat;
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
     private List<Post> postLists;
@@ -44,6 +48,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         reminder = view.findViewById(R.id.reminder);
+        btn_chat = view.findViewById(R.id.btn_chat);
 
         recyclerView = view.findViewById(R.id.rv_view);
         recyclerView.setHasFixedSize(true);
@@ -56,6 +61,13 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(postAdapter);
 
         checkFollowing();
+
+        btn_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ChatListActivity.class));
+            }
+        });
 
         return view;
     }

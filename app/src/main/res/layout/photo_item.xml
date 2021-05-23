@@ -3,9 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="1dp"
-        android:id="@+id/post_image"/>
+        android:id="@+id/post_image"
+        android:src="@mipmap/ic_launcher"
+       />
 </RelativeLayout>

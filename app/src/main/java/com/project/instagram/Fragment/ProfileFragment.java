@@ -16,12 +16,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,6 +69,7 @@ public class ProfileFragment extends Fragment {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         SharedPreferences preferences = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
         profileid = preferences.getString("profileid", "none");
+
         image_profile = view.findViewById(R.id.image_profile);
         posts = view.findViewById(R.id.posts);
         following = view.findViewById(R.id.following);
@@ -80,8 +83,10 @@ public class ProfileFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new GridLayoutManager(getContext(), 3);
+        GridLayoutManager linearLayoutManager = new GridLayoutManager(getContext(), 3);
+        //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
+
         postsList = new ArrayList<>();
         myPhotoAdapter = new MyPhotoAdapter(getContext(), postsList);
         recyclerView.setAdapter(myPhotoAdapter);
@@ -91,6 +96,7 @@ public class ProfileFragment extends Fragment {
         getFollowers();
         getPost();
         myPhotos();
+
 
         if (profileid.equals(firebaseUser.getUid())){
             edit_profile.setText("Edit Profile");
@@ -139,7 +145,10 @@ public class ProfileFragment extends Fragment {
                 }
                 User user = snapshot.getValue(User.class);
 
-                Glide.with(getContext()).load(user.getImageurl()).into(image_profile);
+                if(!user.getImageurl().equals("default")){
+                    Glide.with(getContext()).load(user.getImageurl()).into(image_profile);
+                }
+
                 username.setText(user.getUsername());
                 fullname.setText((user.getFullname()));
                 bio.setText(user.getBio());
@@ -234,6 +243,10 @@ public class ProfileFragment extends Fragment {
                     }
                 }
                 Collections.reverse(postsList);
+//                Log.e("List post size:", postsList.size()+"");
+//                for(Post post : postsList){
+//                    Log.e("Post Image:", post.getPostimage());
+//                }
                 myPhotoAdapter.notifyDataSetChanged();
             }
 
@@ -242,7 +255,6 @@ public class ProfileFragment extends Fragment {
 
             }
         });
-
     }
     public void showAlertDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());

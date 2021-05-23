@@ -16,11 +16,11 @@ import com.project.instagram.R;
 import java.util.List;
 
 public class MyPhotoAdapter extends  RecyclerView.Adapter<MyPhotoAdapter.ViewHolder> {
-    private Context context;
+    private Context mContext;
     private List<Post> mPosts;
 
     public MyPhotoAdapter(Context context, List<Post> mPosts) {
-        this.context = context;
+        this.mContext = context;
         this.mPosts = mPosts;
     }
 
@@ -29,7 +29,7 @@ public class MyPhotoAdapter extends  RecyclerView.Adapter<MyPhotoAdapter.ViewHol
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.photo_item, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.photo_item, parent, false);
 
         return new MyPhotoAdapter.ViewHolder(view) ;
     }
@@ -37,9 +37,7 @@ public class MyPhotoAdapter extends  RecyclerView.Adapter<MyPhotoAdapter.ViewHol
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Post post = mPosts.get(position);
-
-        Glide.with(context).load(post.getPostimage()).into(holder.post_image);
-
+        Glide.with(mContext).load(post.getPostimage()).into(holder.post_image);
     }
 
     @Override
