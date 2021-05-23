@@ -58,6 +58,7 @@
         android:textAlignment="center"
         android:textStyle="italic"
         android:layout_below="@+id/rv_view"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:visibility="gone"/>
 
 </RelativeLayout>
