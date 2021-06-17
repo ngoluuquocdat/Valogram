@@ -79,7 +79,7 @@
                                 android:layout_height="wrap_content"
                                 android:id="@+id/posts"
                                 android:textColor="@color/colorPrimaryDark"
-                                android:gravity="center"
+                                android:layout_gravity="center"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
                             <TextView
@@ -98,7 +98,7 @@
                                 android:layout_height="wrap_content"
                                 android:id="@+id/followers"
                                 android:textColor="@color/colorPrimaryDark"
-                                android:gravity="center"
+                                android:layout_gravity="center"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
                             <TextView
@@ -117,7 +117,7 @@
                                 android:layout_height="wrap_content"
                                 android:id="@+id/following"
                                 android:textColor="@color/colorPrimaryDark"
-                                android:gravity="center"
+                                android:layout_gravity="center"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
                             <TextView
