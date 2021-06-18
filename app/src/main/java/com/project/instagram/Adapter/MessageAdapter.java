@@ -56,8 +56,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         Chat chat = mChat.get(position);
 
         holder.show_message.setText(chat.getMessage());
-        if (!imageUrl.equals("default")) {
-            Glide.with(mContext).load(imageUrl).into(holder.profile_image);
+
+        try{
+            if (!imageUrl.equals("default")) {
+                Glide.with(mContext).load(imageUrl).into(holder.profile_image);
+            }
+        } catch(NullPointerException null_exp) {
+            // do nothing, just ignore that item
         }
     }
 
