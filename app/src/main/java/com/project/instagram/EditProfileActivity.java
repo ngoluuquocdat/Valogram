@@ -111,7 +111,8 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateProfile(fullname.getText().toString(), username.getText().toString(), bio.getText().toString());
-                Toast.makeText(getApplicationContext(), "Change Successfull!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Change Successfully!", Toast.LENGTH_LONG).show();
+                finish();
             }
         });
     }
@@ -159,8 +160,9 @@ public class EditProfileActivity extends AppCompatActivity {
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("imageURL", myUrl);
                         reference.updateChildren(hashMap);
-                        Log.e("Error", myUrl);
+                        Toast.makeText(EditProfileActivity.this, "Change Successfully", Toast.LENGTH_SHORT).show();
                         pd.dismiss();
+                        finish();
                     } else {
                         Toast.makeText(EditProfileActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                     }
